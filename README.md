@@ -1,5 +1,7 @@
 # Doloc Town 存档修改器
 
+[下载 Windows 修改器](https://github.com/TonisK82/doloc-town-save-editor/releases/tag/v0.1.0) · [源码运行与打包](BUILD.md)
+
 双击 `DolocTownSaveEditor.exe`，无需安装 Python。
 
 1. 完全退出游戏，点击“打开存档”。默认目录为 `%USERPROFILE%\AppData\LocalLow\RedSawGames\DolocTown\SAVE`，通常选择 `doloc-save-0.data`。
