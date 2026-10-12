@@ -1,0 +1,14 @@
+__pycache__/
+*.pyc
+build/
+dist/
+*.exe
+*.zip
+*.spec
+*.data
+*.prev*
+*.editor-backup-*
+sample.json
+devlibs/
+source/
+configs/
