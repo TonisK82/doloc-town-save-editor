@@ -1,12 +1,14 @@
-# v0.1.0 预发布
+# v0.1.1 预发布 / Pre-release
 
-Windows 中文界面存档修改器，支持背包、箱子及嵌套容器物品编辑。
+- 道具列表新增垂直滚动条 / Vertical scrollbar for the item catalog.
+- 中英文界面切换和道具搜索 / Chinese-English interface and item search.
+- 修改玩家金钱（0–999,999,999），同步存档概览 / Edit player money and save overview.
+- 语言切换保留未保存修改 / Preserve pending edits when switching languages.
 
-- 搜索 990 种道具，添加到空格、替换、清空或修改数量。
-- 按游戏叠加上限验证数量。
-- 保存前自动备份，检测外部存档更新。
-- 默认显示农场容器，可显示城镇和地牢容器。
+下载 ZIP 后解压，运行 DolocTownSaveEditor-v0.1.1.exe。无需安装 Python，保存前完全退出游戏。
 
-下载 ZIP 后解压，运行 DolocTownSaveEditor.exe，无需安装 Python。使用前完全退出游戏。
+Extract the ZIP and run DolocTownSaveEditor-v0.1.1.exe. No Python needed. Quit the game before saving. Backups are created automatically.
 
-已验证真实存档的 AES/JSON 回读、编辑副本、自动备份、冲突检测、源码界面及打包程序启动。尚未进行游戏内载入实测，因此标记为预发布。
+已验证滚动、中英文切换与编辑保留、金钱边界和加密回读、备份及独立程序启动。原始玩家存档未修改。尚未进行游戏内载入实测。
+
+Verified scrolling, language switching, pending edits, money bounds, encrypted round-trip, backups and packaged startup. Original saves were not modified. In-game loading has not been tested.

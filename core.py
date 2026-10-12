@@ -16,16 +16,29 @@ def decode(raw):
 def encode(data):
  text=json.dumps(data,ensure_ascii=False,separators=(',',':'),allow_nan=False).encode('utf-8')
  return (PREFIX+base64.b64encode(AES.new(KEY,AES.MODE_CBC,IV).encrypt(pad(text,16))).decode()).encode('utf-8')
-def title(id):return CATALOG.get(id,{}).get('title',id)
-def inventories(data,include_world=False):
+def title(id,language='zh'):
+ entry=CATALOG.get(id,{})
+ return entry.get('title_en',id) if language=='en' else entry.get('title',id)
+def get_money(data):
+ value=data['farmData']['agentData']['money']
+ if type(value) is not int:raise ValueError('Invalid player money field')
+ return value
+def set_money(data,value):
+ if type(value) is not int or not 0<=value<=999999999:
+  raise ValueError('Money must be an integer between 0 and 999999999')
+ get_money(data)
+ data['farmData']['agentData']['money']=value
+ if isinstance(data.get('baseData'),dict) and 'money' in data['baseData']:
+  data['baseData']['money']=value
+def inventories(data,include_world=False,language='zh'):
  result=[]
  def walk(v,path=(),label=''):
   if isinstance(v,dict):
    if isinstance(v.get('items'),list) and isinstance(v.get('slotLockStates'),list):
     if include_world or (path and path[0]=='farmData'):
-     result.append((path,v,'背包' if path==('farmData','inventory','backpack') else label or '/'.join(map(str,path))))
+     result.append((path,v,('Backpack' if language=='en' else '背包') if path==('farmData','inventory','backpack') else label or '/'.join(map(str,path))))
    own=label
-   if 'itemName' in v:own=title(v['itemName'])
+   if 'itemName' in v:own=title(v['itemName'],language)
    elif '$type' in v:
     own=v['$type'].split(',')[0].split('.')[-1]
     pos=v.get('anchor',v.get('position'))

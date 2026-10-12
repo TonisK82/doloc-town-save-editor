@@ -1,6 +1,12 @@
 # Doloc Town 存档修改器
 
-[下载 Windows 修改器](https://github.com/TonisK82/doloc-town-save-editor/releases/tag/v0.1.0) · [源码运行与打包](BUILD.md)
+[下载 Windows 修改器](https://github.com/TonisK82/doloc-town-save-editor/releases/tag/v0.1.1) · [源码运行与打包](BUILD.md)
+
+v0.1.1：道具列表增加垂直滚动条，右上角支持中文 / English 切换，支持修改玩家金钱（0–999,999,999）。缺少英文名称的道具显示英文 ID；搜索支持中文、英文和 ID。
+
+编辑顶部金钱后点击“应用金钱”再保存；直接保存也会应用当前金钱输入。修改同步玩家余额和存档概览，保存前自动备份。语言切换保留未保存的修改。
+
+English: Switch languages with the top-right selector. Edit Money and click Apply money, then Save. Saving also applies the money field. The range is 0–999,999,999. The catalog supports Chinese, English and ID searches and includes a vertical scrollbar. Quit the game before saving; backups are created automatically.
 
 双击 `DolocTownSaveEditor.exe`，无需安装 Python。
 
@@ -16,4 +22,4 @@
 
 已验证：真实存档解密/加密回读、背包和容器修改、全部 990 种道具模板、自动备份、并发修改检测、界面初始化及搜索。未进行游戏内载入实测。原始存档和游戏安装文件未被修改。
 
-当前为 v0.1.0 预发布。本版本依据 2026-10-13 本机安装资源制作。游戏更新后若格式或道具定义变化，需要重新核对兼容性。
+当前为 v0.1.1 预发布。本版本依据 2026-10-13 本机安装资源制作。游戏更新后若格式或道具定义变化，需要重新核对兼容性。
