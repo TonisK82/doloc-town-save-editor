@@ -2,13 +2,15 @@ import copy, hashlib, pathlib, subprocess, sys, tkinter as tk
 from tkinter import ttk, filedialog, messagebox
 import core
 from i18n import translate
+import compendium
+from compendium_ui import CompendiumWindow
 
 class Editor(tk.Tk):
 
     def __init__(self):
         super().__init__()
         self.language = 'zh'
-        self.title(self.tr('Doloc Town 存档修改器')+' v0.1.1')
+        self.title(self.tr('Doloc Town 存档修改器')+' v0.1.2')
         self.geometry('1180x760')
         self.minsize(950, 600)
         self.data = None
@@ -16,6 +18,7 @@ class Editor(tk.Tk):
         self.dirty = False
         self.hash = None
         self.container = None
+        self.compendium_window = None
         ttk.Style().configure('Treeview', rowheight=27)
         top = ttk.Frame(self, padding=10)
         top.pack(fill='x')
@@ -36,6 +39,7 @@ class Editor(tk.Tk):
         self.money_entry.pack(side='left', padx=8)
         self.money_button = ttk.Button(moneybar, text=self.tr('应用金钱'), command=self.apply_money, state='disabled')
         self.money_button.pack(side='left')
+        ttk.Button(moneybar,text=self.tr('图鉴解锁进度'),command=self.open_compendium).pack(side='left',padx=12)
         ttk.Label(self, text=self.tr('编辑前请退出游戏。数量遵守游戏叠加上限；更换物品会重置该格的特殊属性。'), padding=10).pack(fill='x')
         panes = ttk.Panedwindow(self, orient='horizontal')
         panes.pack(fill='both', expand=True, padx=10)
@@ -98,6 +102,7 @@ class Editor(tk.Tk):
         return not self.dirty or messagebox.askyesno(self.tr('未保存'), self.tr('放弃当前未保存的修改？'))
 
     def open(self):
+        if self.compendium_window is not None:self.compendium_window.close()
         if not self.confirm_discard():
             return
         p = filedialog.askopenfilename(initialdir=str(core.DEFAULT), filetypes=[(self.tr('Doloc Town 存档'), '*.data *.prev*'), (self.tr('所有文件'), '*.*')])
@@ -273,6 +278,15 @@ class Editor(tk.Tk):
     def tr(self,text):
         return translate(text,self.language)
 
+    def open_compendium(self):
+        if self.data is None:
+            self.error(self.tr('请先打开存档'));return
+        try:
+            compendium.manager(self.data)
+            if self.compendium_window is not None:self.compendium_window.lift();return
+            self.compendium_window=CompendiumWindow(self)
+        except Exception as e:self.error(e)
+
     def commit_money(self):
         if self.data is None:
             raise ValueError(self.tr('请先打开存档'))
@@ -292,6 +306,8 @@ class Editor(tk.Tk):
         except Exception as e:self.error(e)
 
     def switch_language(self,*args):
+        reopen=self.compendium_window is not None
+        if reopen:self.compendium_window.close()
         selected=self.items.selection()
         currentpath=self.invs[int(self.containers.selection()[0])][0] if self.data and self.containers.selection() else None
         slot=self.slots.selection()
@@ -301,7 +317,7 @@ class Editor(tk.Tk):
                 widget.configure(text=self.tr(widget.cget('text')))
             for child in widget.winfo_children():update(child)
         update(self)
-        self.title(self.tr('Doloc Town 存档修改器')+' v0.1.1')
+        self.title(self.tr('Doloc Town 存档修改器')+' v0.1.2')
         for key,name in [('slot','格子'),('name','物品'),('count','数量')]:self.slots.heading(key,text=self.tr(name))
         self.items.heading('name',text=self.tr('物品名称 / ID'));self.items.heading('limit',text=self.tr('上限'))
         self.status.set(self.tr(self.status.get()))
@@ -312,6 +328,7 @@ class Editor(tk.Tk):
             for i,(path,inv,label) in enumerate(self.invs):
                 if path==currentpath:self.containers.selection_set(str(i));self.select_container();break
             if slot and self.slots.exists(slot[0]):self.slots.selection_set(slot[0])
+        if reopen:self.open_compendium()
 
 if __name__ == '__main__':
     if '--self-test' in sys.argv:
@@ -329,10 +346,13 @@ if __name__ == '__main__':
             app.lang_choice.set('English')
             app.switch_language()
             assert app.money_button.cget('text') == 'Apply money'
+            app.open_compendium()
+            assert app.compendium_window is not None
+            app.compendium_window.close()
             core.set_money(d,123456)
             assert core.get_money(core.decode(core.encode(d))) == 123456
             app.destroy()
-            report.write_text('PASS v0.1.1: packaged AES, 990 items, bilingual GUI, scrollbar, money round-trip', encoding='utf-8')
+            report.write_text('PASS v0.1.2: packaged AES, 990 items, bilingual GUI, scrollbar, money round-trip, compendium GUI', encoding='utf-8')
         except Exception as e:
             report.write_text('FAIL: ' + repr(e), encoding='utf-8')
             raise

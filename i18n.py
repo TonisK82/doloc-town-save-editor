@@ -1,4 +1,6 @@
 EN = {
+ '图鉴解锁进度':'Compendium progress',
+ '不支持此存档的图鉴格式':'Unsupported compendium save format',
  'Doloc Town 存档修改器':'Doloc Town Save Editor',
  '打开存档':'Open save', '保存（自动备份）':'Save (with backup)', '另存为':'Save as',
  '请选择 .data 存档':'Select a .data save file',
