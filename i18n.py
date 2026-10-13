@@ -1,4 +1,5 @@
 EN = {
+ '自动布局农场':'Auto farm layout',
  '图鉴解锁进度':'Compendium progress',
  '不支持此存档的图鉴格式':'Unsupported compendium save format',
  'Doloc Town 存档修改器':'Doloc Town Save Editor',

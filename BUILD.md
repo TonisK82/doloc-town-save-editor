@@ -5,10 +5,10 @@
 ```powershell
 python -m pip install -r requirements.txt
 python editor.py
-python -m PyInstaller --noconfirm --windowed --onefile --name DolocTownSaveEditor-v0.1.2 --add-data "catalog.json;." --add-data "compendium.json;." editor.py
+python -m PyInstaller --noconfirm --windowed --onefile --name DolocTownSaveEditor-v0.1.3 --add-data "catalog.json;." --add-data "compendium.json;." --add-data "layout_catalog.json;." editor.py
 ```
 
-程序输出在 `dist/DolocTownSaveEditor-v0.1.2.exe`。
+程序输出在 `dist/DolocTownSaveEditor-v0.1.3.exe`。
 
 `compendium.json` 包含可编辑图鉴的名称、编号和资料编号，不包含资料正文。图鉴编辑仅支持逐项修改，不提供全部解锁或批量修改。
 

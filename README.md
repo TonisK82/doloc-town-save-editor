@@ -4,7 +4,15 @@
 
 ## 中文
 
-[下载 Windows 修改器 v0.1.2](https://github.com/TonisK82/doloc-town-save-editor/releases/tag/v0.1.2) · [源码运行与打包](BUILD.md)
+[下载 Windows 修改器 v0.1.3](https://github.com/TonisK82/doloc-town-save-editor/releases/tag/v0.1.3) · [源码运行与打包](BUILD.md)
+
+### v0.1.3 农场布局第一版
+
+顶部点击“自动布局农场”，选择生产设施归组或作物品种归组，查看前后占地示意和移动清单，再导出布局存档副本。先备份原存档，再将副本复制成原存档文件名进行游戏内测试。
+
+本版只整理已放置设施：复用同排、同尺寸、同放置条件的已有占地，保留原道路和空隙；建筑、供电设备、有附着要求的设备及灌溉/影响设施附近的种植盆固定。不消耗材料，不新增建筑或自动放置背包道具。箱内物品、机器与作物状态完整保留。
+
+新增布局功能已通过数据范围与回读测试，尚未进行游戏内实测；这是保守整理器，尚不是自由规划整座农场的工具。
 
 ### 作者声明
 
@@ -44,7 +52,7 @@
 
 ### 验证与兼容性
 
-当前为 **v0.1.2 预发布版**，依据 2026-10-13 的本机安装资源制作。已验证存档解密/加密回读、背包和容器编辑、990 种道具模板、自动备份、覆盖冲突检测、滚动条、中英文切换与编辑保留、金钱边界以及独立程序启动。**仓库作者已实测此前 v0.1.1 的功能；新增图鉴编辑尚待游戏内实测。**
+当前为 **v0.1.3 预发布版**，依据 2026-10-13 的本机安装资源制作。已验证存档解密/加密回读、背包和容器编辑、990 种道具模板、自动备份、覆盖冲突检测、滚动条、中英文切换与编辑保留、金钱边界以及独立程序启动。**仓库作者已实测此前 v0.1.1 的功能；新增图鉴编辑尚待游戏内实测。**
 
 道具库包括特殊和开发用途物品，其在当前游戏流程中的可用性由游戏决定。暂不支持未解锁格子扩展、其他玩家属性编辑或游戏进程内修改。游戏更新后若存档格式或道具定义变化，需要重新验证兼容性。
 
@@ -52,7 +60,15 @@
 
 ## English
 
-[Download Windows Save Editor v0.1.2](https://github.com/TonisK82/doloc-town-save-editor/releases/tag/v0.1.2) · [Run and build from source](BUILD.md)
+[Download Windows Save Editor v0.1.3](https://github.com/TonisK82/doloc-town-save-editor/releases/tag/v0.1.3) · [Run and build from source](BUILD.md)
+
+### v0.1.3 first farm planner
+
+Click Auto farm layout, choose production or crop grouping, inspect the before/after occupancy schematic and move list, then export a separate save copy. Back up the original before copying the output to the original save filename for in-game testing.
+
+Reorganizes placed equipment within existing same-row sites of matching size and placement conditions. Preserves occupancy, paths and gaps. Buildings, powered/attached equipment and planting basins near irrigation/affectors remain fixed. No materials are consumed and no unplaced items are built. Container contents, machine state and crops are preserved.
+
+Passed data-scope and round-trip tests; in-game testing is pending. This is a conservative organizer, not yet a free-form whole-farm designer.
 
 ### Author's statement
 
@@ -92,8 +108,9 @@ Quit the game and copy the chosen backup back to the original `.data` filename. 
 
 ### Verification and compatibility
 
-This is the **v0.1.2 pre-release**, based on the locally installed game resources on October 13, 2026. Verification covered save decryption/encryption round trips, backpack and container editing, 990 item templates, backups, overwrite conflict detection, scrolling, language switching with pending edits, money bounds, and packaged application startup. **The owner tested the earlier v0.1.1 features in-game; the new compendium editor still needs in-game testing.**
+This is the **v0.1.3 pre-release**, based on the locally installed game resources on October 13, 2026. Verification covered save decryption/encryption round trips, backpack and container editing, 990 item templates, backups, overwrite conflict detection, scrolling, language switching with pending edits, money bounds, and packaged application startup. **The owner tested the earlier v0.1.1 features in-game; the new compendium editor still needs in-game testing.**
 
 The catalog includes special and development items; the game determines whether they work in your current progress. Expanding locked slots, editing other player attributes, and modifying the running game are not supported. Compatibility must be rechecked if a game update changes the save format or item definitions.
 
 This is an unofficial project and is not affiliated with the game developer or Steam.
+

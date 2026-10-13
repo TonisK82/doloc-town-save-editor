@@ -1,16 +1,9 @@
-# v0.1.2 图鉴逐项编辑 / Individual compendium editor
+# v0.1.3 农场布局第一版 / First farm planner
 
-- 逐项编辑道具、动物、鱼类、怪物、资源和 NPC 的发现/已读状态及资料解锁。
-- 显示分类发现数量、百分比和资料进度，支持中文/英文/ID 搜索。
-- 根据作者要求，不提供全部解锁或批量设置功能。
-- 保留主线任务、好感度、事件记录及图鉴菜单开放状态。
+新增布局预览、生产/作物归组及存档副本导出。只在兼容的现有占地间整理已放置设施，保留道路与占地；供电/连接设施、建筑及灌溉附近种植盆固定。保留箱内物品、机器和作物状态，不消耗或生成资源，不自动建造。
 
-点击顶部“图鉴解锁进度”逐项编辑，点击“应用选中条目”，然后在主窗口另存为覆盖 `doloc-save-0.data`。建议先备份，保存前退出游戏。
+Adds before/after preview, production/crop grouping and separate save export. Reorganizes compatible existing occupied sites only, preserving paths, contents, machines and crops. Buildings, powered/attached equipment and basins near irrigation remain fixed. No resources consumed or created; no automatic construction.
 
-Edit discovery/read flags and individual documents for items, animals, fish, monsters, resources and NPCs. Search in Chinese, English or by ID; view category and document progress. No unlock-all or batch controls. Quest, relationship, event and menu-availability fields are preserved.
+保存前退出游戏；先导出副本并备份原存档，再替换原文件实测。已通过数据保护和加密回读测试，尚待游戏内实测。v0.1.1 正式版仍保留。
 
-Click “Compendium progress,” edit one entry, then click “Apply selected entry.” Use “Save as” in the main window to overwrite `doloc-save-0.data`. Back up first and quit the game before saving.
-
-已通过原有功能回归、图鉴修改范围、未知字段保留、加密回读及界面测试。新增图鉴功能尚待游戏内实测；此前 v0.1.1 正式版保留。
-
-Passed regression, edit-scope, unknown-field preservation, encrypted round-trip and UI tests. In-game testing of the new feature is pending; the v0.1.1 stable release remains available.
+Quit the game before exporting. Back up the original before replacing it with the copy for in-game testing. Passed preservation and encrypted round-trip tests; in-game testing is pending.
